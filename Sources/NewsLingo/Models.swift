@@ -202,20 +202,20 @@ struct LessonPack: Decodable {
 }
 
 enum ArticleImporter {
-    static let extensions = ["jugan", "json", "md", "markdown", "txt", "pdf", "docx", "rtf"]
+    static let extensions = ["newslingo", "json", "md", "markdown", "txt", "pdf", "docx", "rtf"]
 
     static func load(_ url: URL) throws -> Article {
         let scoped = url.startAccessingSecurityScopedResource()
         defer { if scoped { url.stopAccessingSecurityScopedResource() } }
         guard extensions.contains(url.pathExtension.lowercased()) else {
-            throw ImportFailure("请选择 .jugan、JSON、Markdown、TXT、PDF、DOCX 或 RTF 文件。")
+            throw ImportFailure("请选择 .newslingo、JSON、Markdown、TXT、PDF、DOCX 或 RTF 文件。")
         }
         let values = try url.resourceValues(forKeys: [.fileSizeKey, .isRegularFileKey])
         guard values.isRegularFile == true, (values.fileSize ?? Int.max) <= 20 * 1024 * 1024 else {
             throw ImportFailure("请选择不超过 20 MB 的文件。")
         }
         switch url.pathExtension.lowercased() {
-        case "jugan", "json":
+        case "newslingo", "json":
             let pack: LessonPack
             do { pack = try JSONDecoder().decode(LessonPack.self, from: Data(contentsOf: url)) }
             catch let error as ImportFailure { throw error }

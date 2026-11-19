@@ -2,8 +2,8 @@
 import PackageDescription
 
 let package = Package(
-    name: "ReadProof",
+    name: "NewsLingo",
     platforms: [.macOS(.v15)],
-    targets: [.executableTarget(name: "ReadProof")],
+    targets: [.executableTarget(name: "NewsLingo")],
     swiftLanguageModes: [.v5]
 )

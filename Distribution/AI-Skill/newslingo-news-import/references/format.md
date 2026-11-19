@@ -1,4 +1,4 @@
-# NewsLingo .jugan 双语学习包 v2
+# NewsLingo .newslingo 双语学习包 v2
 
 每篇新闻使用一个 UTF-8 JSON 文件。字段如下。
 
@@ -18,8 +18,8 @@
 本机校验和导入。
 
 ```sh
-"/Applications/NewsLingo.app/Contents/MacOS/ReadProof" --validate "/绝对路径/文章.jugan"
-open -b app.jugan.reader "/绝对路径/文章.jugan"
+"/Applications/NewsLingo.app/Contents/MacOS/NewsLingo" --validate "/绝对路径/文章.newslingo"
+open -b app.newslingo.reader "/绝对路径/文章.newslingo"
 ```
 
 校验成功时检查 `bilingualParagraphs` 与 `alignedSentences`，均应大于 0。完整示例在 NewsLingo 的「设置 → AI 导入」。

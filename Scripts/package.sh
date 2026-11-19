@@ -15,7 +15,7 @@ mkdir -p "$iconset" "$bundle/Contents/MacOS" "$bundle/Contents/Resources"
 
 swift build -c "$configuration"
 bin_dir="$(swift build -c "$configuration" --show-bin-path)"
-cp "$bin_dir/ReadProof" "$bundle/Contents/MacOS/ReadProof"
+cp "$bin_dir/NewsLingo" "$bundle/Contents/MacOS/NewsLingo"
 cp Distribution/Info.plist "$bundle/Contents/Info.plist"
 ditto Distribution/AI-Skill "$bundle/Contents/Resources/AI-Skill"
 cp Distribution/WordNet/WordNet.sqlite3 Distribution/WordNet/WordNet-LICENSE.txt "$bundle/Contents/Resources/"
@@ -29,6 +29,6 @@ for dimension in 16 32 128 256 512; do
 done
 iconutil -c icns "$iconset" -o "$bundle/Contents/Resources/AppIcon.icns"
 plutil -lint "$bundle/Contents/Info.plist"
-codesign --force --sign - --identifier app.jugan.reader "$bundle"
+codesign --force --sign - --identifier app.newslingo.reader "$bundle"
 codesign --verify --deep --strict "$bundle"
 printf '%s\n' "$bundle"

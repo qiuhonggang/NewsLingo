@@ -4,14 +4,14 @@
 <dict>
     <key>CFBundleDevelopmentRegion</key><string>zh_CN</string>
     <key>CFBundleDisplayName</key><string>NewsLingo</string>
-    <key>CFBundleExecutable</key><string>ReadProof</string>
+    <key>CFBundleExecutable</key><string>NewsLingo</string>
     <key>CFBundleIconFile</key><string>AppIcon</string>
-    <key>CFBundleIdentifier</key><string>app.jugan.reader</string>
+    <key>CFBundleIdentifier</key><string>app.newslingo.reader</string>
     <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
     <key>CFBundleName</key><string>NewsLingo</string>
     <key>CFBundlePackageType</key><string>APPL</string>
-    <key>CFBundleShortVersionString</key><string>1.2.11</string>
-    <key>CFBundleVersion</key><string>15</string>
+    <key>CFBundleShortVersionString</key><string>1.2.12</string>
+    <key>CFBundleVersion</key><string>16</string>
     <key>LSMinimumSystemVersion</key><string>15.0</string>
     <key>LSApplicationCategoryType</key><string>public.app-category.education</string>
     <key>NSHumanReadableCopyright</key><string>NewsLingo</string>
@@ -23,7 +23,7 @@
             <key>CFBundleTypeName</key><string>NewsLingo 学习包</string>
             <key>CFBundleTypeRole</key><string>Viewer</string>
             <key>LSHandlerRank</key><string>Owner</string>
-            <key>LSItemContentTypes</key><array><string>app.jugan.lesson</string></array>
+            <key>LSItemContentTypes</key><array><string>app.newslingo.lesson</string></array>
         </dict>
         <dict>
             <key>CFBundleTypeName</key><string>可导入文章</string>
@@ -39,10 +39,10 @@
     <key>UTExportedTypeDeclarations</key>
     <array>
         <dict>
-            <key>UTTypeIdentifier</key><string>app.jugan.lesson</string>
+            <key>UTTypeIdentifier</key><string>app.newslingo.lesson</string>
             <key>UTTypeDescription</key><string>NewsLingo 学习包</string>
             <key>UTTypeConformsTo</key><array><string>public.json</string></array>
-            <key>UTTypeTagSpecification</key><dict><key>public.filename-extension</key><array><string>jugan</string></array></dict>
+            <key>UTTypeTagSpecification</key><dict><key>public.filename-extension</key><array><string>newslingo</string></array></dict>
         </dict>
     </array>
 </dict>

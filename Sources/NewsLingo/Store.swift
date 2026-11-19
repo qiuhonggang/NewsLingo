@@ -15,7 +15,7 @@ final class Library {
             if FileManager.default.fileExists(atPath: url.path) {
                 articles = try JSONDecoder().decode([Article].self, from: Data(contentsOf: url))
             } else if seed {
-                let bundledURL = Bundle.main.resourceURL?.appendingPathComponent("AI-Skill/Genie-4-B1.jugan")
+                let bundledURL = Bundle.main.resourceURL?.appendingPathComponent("AI-Skill/Genie-4-B1.newslingo")
                 let bundled = bundledURL.flatMap { try? ArticleImporter.load($0) }
                 articles = [bundled ?? Samples.article]
                 try save(articles)
@@ -82,11 +82,11 @@ final class Library {
     }
 
     static var defaultDirectory: URL {
-        if let override = ProcessInfo.processInfo.environment["JUGAN_DATA_DIR"], !override.isEmpty {
+        if let override = ProcessInfo.processInfo.environment["NEWSLINGO_DATA_DIR"], !override.isEmpty {
             return URL(fileURLWithPath: override, isDirectory: true)
         }
         return FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("Jugan", isDirectory: true)
+            .appendingPathComponent("NewsLingo", isDirectory: true)
     }
 
     static func day(_ date: Date = .now) -> String {

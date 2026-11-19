@@ -1,6 +1,6 @@
 ---
-name: phrasegym-news-import
-description: 从权威媒体、AI 厂商官网和可核实的官方账号采集真实 AI、科技资讯，生成带逐段逐句中文译文和理解题的 NewsLingo 双语 .jugan 学习包。
+name: newslingo-news-import
+description: 从权威媒体、AI 厂商官网和可核实的官方账号采集真实 AI、科技资讯，生成带逐段逐句中文译文和理解题的 NewsLingo 双语 .newslingo 学习包。
 ---
 
 # NewsLingo 双语新闻学习包

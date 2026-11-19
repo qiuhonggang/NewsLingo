@@ -9,7 +9,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     #if DEBUG
     func applicationDidFinishLaunching(_ notification: Notification) {
-        if ProcessInfo.processInfo.environment["JUGAN_QA_APPEARANCE"] == "dark" {
+        if ProcessInfo.processInfo.environment["NEWSLINGO_QA_APPEARANCE"] == "dark" {
             NSApp.appearance = NSAppearance(named: .darkAqua)
         }
     }
@@ -473,7 +473,7 @@ struct AppSettings: View {
 
             Form {
                 Section("从 AI 导入") {
-                    Text("让 AI 从真实新闻生成预译的双语 .jugan 学习包，再双击、拖放或用本地命令导入。")
+                    Text("让 AI 从真实新闻生成预译的双语 .newslingo 学习包，再双击、拖放或用本地命令导入。")
                     Button("显示 AI Skill 和示例") {
                         if let folder = Bundle.main.resourceURL?.appendingPathComponent("AI-Skill") {
                             NSWorkspace.shared.open(folder)
@@ -482,7 +482,7 @@ struct AppSettings: View {
                     Button("复制本地导入命令") {
                         let paste = NSPasteboard.general
                         paste.clearContents()
-                        paste.setString("open -b app.jugan.reader /绝对路径/文章.jugan", forType: .string)
+                        paste.setString("open -b app.newslingo.reader /绝对路径/文章.newslingo", forType: .string)
                     }
                 }
             }
