@@ -19,6 +19,8 @@ NewsLingo 是一款用真实新闻学英语的 macOS 应用。导入 AI、科技
 
 应用使用 SwiftUI、AppKit 和 Swift Charts，跟随 macOS 的浅色或深色外观。文章和学习记录保存在 `~/Library/Application Support/Jugan`，可在「设置 → 通用」打开数据文件夹。学习包制作和外部词典链接可以使用网络，导入后的阅读、内置词典查询和测验可在本机完成。
 
+点击窗口左上角的红色按钮会关闭窗口，NewsLingo 会继续在 Dock 运行。单击 Dock 图标可重新打开窗口，右键点击图标并选「退出」可结束应用。
+
 ## 用 AI 生成学习包
 
 打开「设置 → AI 导入」查看内置 Skill 和示例。把 [`phrasegym-news-import`](Distribution/AI-Skill/phrasegym-news-import/) 加载到支持 Skills 的 AI 客户端，或把[使用说明](Distribution/AI-Skill/使用说明.md)和格式文档交给支持联网的 AI。
