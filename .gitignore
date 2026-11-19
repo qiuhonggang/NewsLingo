@@ -1,0 +1,11 @@
+/.build/
+/.dist/
+/.swiftpm/
+/Releases/
+/DerivedData/
+
+.DS_Store
+xcuserdata/
+*.dmg
+.env
+.env.*

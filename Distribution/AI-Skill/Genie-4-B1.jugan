@@ -1,0 +1,153 @@
+{
+  "version": 2,
+  "title": "Google Rolls Out Genie 4 for Interactive Worlds",
+  "titleZh": "谷歌推出 Genie 4，支持在探索中实时编辑场景",
+  "source": {
+    "name": "Google",
+    "title": "Genie 4 is now available",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/",
+    "published": "2026-11-18"
+  },
+  "level": "B1",
+  "paragraphs": [
+    {
+      "en": "Google started making Genie 4 available to eligible Google AI Ultra subscribers on November 18. The model runs in Project Genie, a browser tool for building and exploring digital worlds. Users on the Google AI Pro plan can join a waiting list.",
+      "zh": "谷歌从 11 月 18 日起，开始向符合条件的 Google AI Ultra 订阅用户推出 Genie 4。这款模型可以在 Project Genie 中使用。Project Genie 是一款可在浏览器中创建和探索数字世界的工具。Google AI Pro 订阅用户可以加入候补名单。",
+      "sentences": [
+        {
+          "en": "Google started making Genie 4 available to eligible Google AI Ultra subscribers on November 18.",
+          "zh": "谷歌从 11 月 18 日起，开始向符合条件的 Google AI Ultra 订阅用户推出 Genie 4。"
+        },
+        {
+          "en": "The model runs in Project Genie, a browser tool for building and exploring digital worlds.",
+          "zh": "这款模型可以在 Project Genie 中使用。Project Genie 是一款可在浏览器中创建和探索数字世界的工具。"
+        },
+        {
+          "en": "Users on the Google AI Pro plan can join a waiting list.",
+          "zh": "Google AI Pro 订阅用户可以加入候补名单。"
+        }
+      ]
+    },
+    {
+      "en": "In Genie 4, users can type a new instruction while they are moving through a scene. A prompt can change the weather or bring a new character into the world without ending the session. Sound is generated as the scene changes, so a character can speak and the surrounding sound can change while people explore.",
+      "zh": "在 Genie 4 中，用户可以一边在场景中移动，一边输入新指令。用户可以用一句提示词改变天气，也可以让一个新角色进入场景，无需结束当前会话。声音会随着场景变化即时生成。因此，用户在探索时可以听到角色说话，周围的环境音也会随之变化。",
+      "sentences": [
+        {
+          "en": "In Genie 4, users can type a new instruction while they are moving through a scene.",
+          "zh": "在 Genie 4 中，用户可以一边在场景中移动，一边输入新指令。"
+        },
+        {
+          "en": "A prompt can change the weather or bring a new character into the world without ending the session.",
+          "zh": "用户可以用一句提示词改变天气，也可以让一个新角色进入场景，无需结束当前会话。"
+        },
+        {
+          "en": "Sound is generated as the scene changes, so a character can speak and the surrounding sound can change while people explore.",
+          "zh": "声音会随着场景变化即时生成。因此，用户在探索时可以听到角色说话，周围的环境音也会随之变化。"
+        }
+      ]
+    },
+    {
+      "en": "Google also updated Genie 3, which is still available in the model menu. A single Genie 3 generation now lasts up to three minutes, compared with one minute before. People can join several worlds into a longer trip or make a new world from a 360-degree photo.",
+      "zh": "谷歌也更新了 Genie 3，用户仍可在模型菜单中选用它。Genie 3 单次生成的体验最长可持续三分钟，此前最多一分钟。用户可以把多个世界连起来，进行更长时间的探索，也可以用一张 360 度全景照片创建新世界。",
+      "sentences": [
+        {
+          "en": "Google also updated Genie 3, which is still available in the model menu.",
+          "zh": "谷歌也更新了 Genie 3，用户仍可在模型菜单中选用它。"
+        },
+        {
+          "en": "A single Genie 3 generation now lasts up to three minutes, compared with one minute before.",
+          "zh": "Genie 3 单次生成的体验最长可持续三分钟，此前最多一分钟。"
+        },
+        {
+          "en": "People can join several worlds into a longer trip or make a new world from a 360-degree photo.",
+          "zh": "用户可以把多个世界连起来，进行更长时间的探索，也可以用一张 360 度全景照片创建新世界。"
+        }
+      ]
+    },
+    {
+      "en": "The update adds an agent that helps users build a world through conversation. A community gallery lets users explore worlds made by other people and make their own versions. In its model card, Google says details can still change unexpectedly during longer sessions or after several complex edits.",
+      "zh": "这次更新还加入了一个智能体，用户可以通过对话让它协助创建世界。用户可以在社区展廊里探索别人创建的世界，也可以在此基础上做出自己的版本。谷歌在模型卡中指出，体验时间较长或连续进行多次复杂编辑后，场景细节仍可能出现意外变化。",
+      "sentences": [
+        {
+          "en": "The update adds an agent that helps users build a world through conversation.",
+          "zh": "这次更新还加入了一个智能体，用户可以通过对话让它协助创建世界。"
+        },
+        {
+          "en": "A community gallery lets users explore worlds made by other people and make their own versions.",
+          "zh": "用户可以在社区展廊里探索别人创建的世界，也可以在此基础上做出自己的版本。"
+        },
+        {
+          "en": "In its model card, Google says details can still change unexpectedly during longer sessions or after several complex edits.",
+          "zh": "谷歌在模型卡中指出，体验时间较长或连续进行多次复杂编辑后，场景细节仍可能出现意外变化。"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "kind": "mainIdea",
+      "prompt": "Which headline would also fit this report?",
+      "choices": [
+        "Google brings live scene editing and sound to Project Genie",
+        "Google replaces all earlier Genie models with Genie 4",
+        "Google opens its world-building tool to everyone at once",
+        "Google launches a gallery for viewing 360-degree photos"
+      ],
+      "answer": 0,
+      "evidence": "In Genie 4, users can type a new instruction while they are moving through a scene. A prompt can change the weather or bring a new character into the world without ending the session. Sound is generated as the scene changes, so a character can speak and the surrounding sound can change while people explore.",
+      "explanation": "主要新闻是 Genie 4 开始上线，用户可以在交互场景中即时编辑并听到随场景变化的音频。"
+    },
+    {
+      "kind": "detail",
+      "prompt": "What can someone with Google AI Pro do at the time of the announcement?",
+      "choices": [
+        "Use Genie 4 through the model menu right away.",
+        "Access Genie 4 only after making a gallery entry.",
+        "Join a waiting list for Project Genie.",
+        "Use Genie 4 as long as the session lasts under a minute."
+      ],
+      "answer": 2,
+      "evidence": "Google started making Genie 4 available to eligible Google AI Ultra subscribers on November 18. The model runs in Project Genie, a browser tool for building and exploring digital worlds. Users on the Google AI Pro plan can join a waiting list.",
+      "explanation": "原文区分了两种订阅。符合条件的 Ultra 用户开始获得访问权限，Pro 用户可以加入候补名单。"
+    },
+    {
+      "kind": "inference",
+      "prompt": "A user wants one generation to last more than a minute and plans to start with a panoramic photo. Which option fits both needs described in the report?",
+      "choices": [
+        "Genie 4 with a new prompt halfway through.",
+        "The updated Genie 3 in the model menu.",
+        "The older, one-minute version of Genie 3.",
+        "The community gallery without using a model."
+      ],
+      "answer": 1,
+      "evidence": "Google also updated Genie 3, which is still available in the model menu. A single Genie 3 generation now lasts up to three minutes, compared with one minute before. People can join several worlds into a longer trip or make a new world from a 360-degree photo.",
+      "explanation": "更新后的 Genie 3 同时支持最长三分钟的单次体验和以 360 度全景照片为起点。"
+    },
+    {
+      "kind": "vocabulary",
+      "prompt": "What does “a prompt” refer to in the second paragraph?",
+      "choices": [
+        "A sound already playing in the scene.",
+        "An image loaded from the gallery.",
+        "A screen message about the waiting list.",
+        "An instruction typed by the user."
+      ],
+      "answer": 3,
+      "evidence": "In Genie 4, users can type a new instruction while they are moving through a scene. A prompt can change the weather or bring a new character into the world without ending the session.",
+      "explanation": "前一句说明用户可以输入新指令，后一句用改变天气和加入角色说明这种指令的用途。"
+    },
+    {
+      "kind": "detail",
+      "prompt": "What limitation does Google mention in its model card?",
+      "choices": [
+        "Only short sessions can include the voices of characters.",
+        "Some scene details may shift during longer sessions or after complex edits.",
+        "Users cannot enter text after a scene has started.",
+        "A world created from a photo cannot be put in the gallery."
+      ],
+      "answer": 1,
+      "evidence": "In its model card, Google says details can still change unexpectedly during longer sessions or after several complex edits.",
+      "explanation": "模型卡指出，较长会话或多次复杂编辑后，部分场景细节仍可能变化。"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "title": "A First Look Through NASA’s Roman Telescope",
+  "source": {
+    "name": "NASA · 英文导读",
+    "url": "https://www.nasa.gov/news-release/nasa-invites-media-public-to-view-roman-telescopes-first-images/",
+    "published": "2026-11-17"
+  },
+  "level": "B1",
+  "paragraphs": [
+    "NASA has announced when the public can see the first images from the Nancy Grace Roman Space Telescope. The agency plans to show them on December 7 during a live broadcast from a scientific meeting in San Francisco. NASA will also put the images on its website at the same time, so people can examine them even if they are not attending the meeting.",
+    "The release follows months of preparation. Roman launched on August 30 and traveled toward a point in space called L2, about a million miles from Earth. During the trip, the team switched on the telescope’s systems and checked that its instruments were ready for science. In this case, taking flight was the start of the work needed to produce useful images.",
+    "Roman is designed to study large areas of the sky with infrared light. These broad views will help researchers look for patterns across many objects. NASA says the mission will study dark matter, dark energy, and planets that orbit other stars. The first images give people a chance to see what the telescope can do before its wider surveys are complete.",
+    "NASA is also inviting people to claim a pixel in one of the first images. A pixel is a tiny part of a digital picture. After the image is public, participants can look up their pixel and get a digital card with information about it. The activity gives each person a small part of a much bigger picture to explore."
+  ],
+  "questions": [
+    {
+      "kind": "mainIdea",
+      "prompt": "What is the article mainly about?",
+      "choices": ["How scientists proved what dark matter is.", "Why NASA chose San Francisco as a launch site.", "How NASA will share Roman’s first images and what they are meant to show.", "How other telescopes compete with Roman for observing time."],
+      "answer": 2,
+      "evidence": "The first images give people a chance to see what the telescope can do before its wider surveys are complete.",
+      "explanation": "文章从首图发布方式写到望远镜的能力，最后介绍公众参与活动。"
+    },
+    {
+      "kind": "detail",
+      "prompt": "What did the team do while Roman traveled toward L2?",
+      "choices": ["Turned on its systems and checked the instruments.", "Released the first images at a scientific meeting.", "Made a map of every planet outside the solar system.", "Invited the public to control an instrument."],
+      "answer": 0,
+      "evidence": "During the trip, the team switched on the telescope’s systems and checked that its instruments were ready for science.",
+      "explanation": "团队在途中开启并检查了设备，确保它们能用于科学观测。"
+    },
+    {
+      "kind": "inference",
+      "prompt": "Why can a reader see Roman’s first results without traveling to San Francisco?",
+      "choices": ["Roman will move to a viewing site closer to the reader.", "NASA is sending printed images to everyone who registers.", "Only local researchers will be able to see the broadcast.", "NASA plans to publish the images online during the release."],
+      "answer": 3,
+      "evidence": "NASA will also put the images on its website at the same time, so people can examine them even if they are not attending the meeting.",
+      "explanation": "网页同步发布，让没有到场的人也能查看图像。"
+    },
+    {
+      "kind": "vocabulary",
+      "prompt": "What does “claim a pixel” let a participant do in this article?",
+      "choices": ["Ask NASA to remove part of an image.", "Identify a tiny part of an image to look up later.", "Receive a telescope that can take infrared pictures.", "Change the measurements recorded by Roman."],
+      "answer": 1,
+      "evidence": "After the image is public, participants can look up their pixel and get a digital card with information about it.",
+      "explanation": "这里的 claim 指选取一个像素，公开后可以定位并了解它。"
+    }
+  ]
+}

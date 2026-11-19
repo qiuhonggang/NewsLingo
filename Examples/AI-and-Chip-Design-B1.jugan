@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "title": "How AI Is Helping Engineers Improve Chips",
+  "source": {
+    "name": "OpenAI · B1 英文导读",
+    "url": "https://openai.com/index/advancing-chip-design-with-our-models/",
+    "published": "2026-11-18"
+  },
+  "level": "B1",
+  "paragraphs": [
+    "AI systems need computer chips to run. Now, according to a report from OpenAI, AI is helping engineers improve the designs of those chips. The company described work on its own chip, called Jalapeño, as well as a project with AMD. In both cases, the aim was to improve parts of a chip while keeping those parts able to do their original jobs.",
+    "Engineers use code to describe how the parts of a chip work and how they pass information to one another. In the AMD project, OpenAI's model suggested changes to this code. Chip design software checked whether a part still did the same job after a change. The team also looked at how fast the part could work, how much power it needed, and how much space it took up on the chip.",
+    "OpenAI reported improvements of up to 14 percent in its work on AMD's graphics chip design, compared with designs that engineers had already improved. AMD used some of the changes in a design it sent to be made. It saved other changes for future versions. The result came from this project, so it does not tell us how much a different chip might improve.",
+    "OpenAI also tested models on two smaller processor designs. In these tests, a design that failed a check got no points. The researchers used a computer test to estimate how many instructions, or small steps, a working processor could complete in one second. OpenAI says it will work with Synopsys to train a new model to use chip design tools. The aim is to find more useful design ideas and check them with the tools engineers already use."
+  ],
+  "questions": [
+    {
+      "kind": "mainIdea",
+      "prompt": "Which sentence best sums up the article?",
+      "choices": [
+        "Chip engineers are testing which graphics chips can run AI with the least power.",
+        "AI can suggest changes to chips, and engineering tests help show which changes work.",
+        "AMD is replacing its graphics chips with two small processors designed by OpenAI.",
+        "OpenAI is building a new chip so it can stop using tools made by other companies."
+      ],
+      "answer": 1,
+      "evidence": "The aim is to find more useful design ideas and check them with the tools engineers already use.",
+      "explanation": "文章用 OpenAI 和 AMD 的案例说明模型如何提出改进，再用工程工具检查改动是否可用。"
+    },
+    {
+      "kind": "detail",
+      "prompt": "What did AMD do with the changes suggested in the project?",
+      "choices": [
+        "It saved all of them for a future chip.",
+        "It used all of them in the two small processors.",
+        "It tested them and sent the original design to be made.",
+        "It used some in a design sent to be made and kept others for later."
+      ],
+      "answer": 3,
+      "evidence": "AMD used some of the changes in a design it sent to be made. It saved other changes for future versions.",
+      "explanation": "一部分改动进入了已送去制造的设计，另一部分留给未来版本。"
+    },
+    {
+      "kind": "inference",
+      "prompt": "A processor design looks faster, but it fails a working check. How would the small processor tests treat it?",
+      "choices": [
+        "Give it zero points, even if it looks faster.",
+        "Give it points for speed and ignore the failed check.",
+        "Score it using the result from the AMD project.",
+        "Give it the same score as the original design."
+      ],
+      "answer": 0,
+      "evidence": "In these tests, a design that failed a check got no points.",
+      "explanation": "题设中的方案虽然看起来更快，但没有通过检查。原文规定这类方案得零分，因此速度不能抵消检查失败。"
+    },
+    {
+      "kind": "vocabulary",
+      "prompt": "What does “instructions” mean in the final paragraph?",
+      "choices": [
+        "The rules about which changes AMD may use.",
+        "A guide that teaches a person how to build a chip.",
+        "Small steps that a processor carries out.",
+        "Notes about changes for a future chip."
+      ],
+      "answer": 2,
+      "evidence": "The researchers used a computer test to estimate how many instructions, or small steps, a working processor could complete in one second.",
+      "explanation": "句中的 or small steps 直接解释了 instructions。在这里指处理器执行的基本操作。"
+    },
+    {
+      "kind": "detail",
+      "prompt": "Apart from checking that a part still worked, what did the team compare in the AMD project?",
+      "choices": [
+        "The price of the chip, the amount of code, and the time it took to make.",
+        "How fast the part worked, how much power it drew, and how much chip space it used.",
+        "How many chips AMD sold, which tests it passed, and where it made them.",
+        "The chip's speed, the price of the design software, and the number of suggested changes."
+      ],
+      "answer": 1,
+      "evidence": "The team also looked at how fast the part could work, how much power it needed, and how much space it took up on the chip.",
+      "explanation": "正文列出的三个比较维度是速度、功耗和芯片面积。"
+    }
+  ]
+}
