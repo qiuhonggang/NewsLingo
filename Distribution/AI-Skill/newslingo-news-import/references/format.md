@@ -8,6 +8,7 @@
 | `title` / `titleZh` | 英文导读标题及其简体中文译名 |
 | `source` | `name` 发布方，`title` 来源原始标题，`url` 直接指向原文，`published` 为原文的 `YYYY-MM-DD` |
 | `level` | `A2`、`B1`、`B2`、`C1`、`C2` 之一 |
+| `summary` | 本 Skill 生成的学习包须提供 `{"en":"…","zh":"…"}`。英文 2–3 句交代主要事实，中文译文保持一致。英中文本分别不超过 600、650 字符。 |
 | `paragraphs` | 按阅读顺序排列的段落对象。每个对象有 `en`、`zh`、`sentences` |
 | `questions` | 4–8 道题，包含主旨、细节、推断 |
 

@@ -57,6 +57,7 @@ final class WordTextView: NSTextView, NSPopoverDelegate {
         return button
     }()
     private var definitionPopover: NSPopover?
+    private var definitionDismissalMonitor: Any?
     private var markedRange: NSRange?
     private var clickLookup: DispatchWorkItem?
 
@@ -178,14 +179,21 @@ final class WordTextView: NSTextView, NSPopoverDelegate {
 
     func popoverWillClose(_ notification: Notification) {
         guard let closing = notification.object as? NSPopover, closing === definitionPopover else { return }
-        clearMark()
-        definitionPopover = nil
+        clearDefinition()
     }
 
     func dismissDefinition() {
         definitionPopover?.delegate = nil
         definitionPopover?.close()
+        clearDefinition()
+    }
+
+    private func clearDefinition() {
         definitionPopover = nil
+        if let definitionDismissalMonitor {
+            NSEvent.removeMonitor(definitionDismissalMonitor)
+            self.definitionDismissalMonitor = nil
+        }
         clearMark()
     }
 
@@ -292,20 +300,32 @@ final class WordTextView: NSTextView, NSPopoverDelegate {
         let anchor = layoutManager.boundingRect(forGlyphRange: anchorGlyphs, in: textContainer)
             .offsetBy(dx: textContainerOrigin.x, dy: textContainerOrigin.y)
         let panel = NSPopover()
-        panel.behavior = .transient
+        // Keep the app's definition open while AppKit presents a second lookup popover.
+        panel.behavior = .applicationDefined
         panel.delegate = self
         panel.animates = !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion
         let size = WordDefinitionView.size(on: window?.screen)
         let definition = WordDefinitionView(
             word: word,
             entry: SystemDictionary.lookup(word, in: readingText, at: range),
-            showSystem: { [weak self, weak panel] in
-                panel?.close()
+            showSystem: { [weak self] in
                 self?.showDefinition(for: nil, range: range, options: [.presentationType: NSView.DefinitionPresentationType.overlay])
             },
             close: { [weak panel] in panel?.close() }
         )
         .frame(width: size.width, height: size.height)
+        .environment(\.presentSystemLookup) { [weak self] text, screenPoint in
+            guard let host = self?.window?.contentView else { return }
+            guard let hostWindow = host.window else { return }
+            let windowPoint = hostWindow.convertPoint(fromScreen: screenPoint)
+            let point = host.convert(windowPoint, from: nil)
+            let visible = host.visibleRect.insetBy(dx: 8, dy: 8)
+            let baseline = NSPoint(x: min(max(point.x, visible.minX), visible.maxX),
+                                   y: min(max(point.y, visible.minY), visible.maxY))
+            // AppKit's Look Up popover must be presented from the reading window.
+            host.showDefinition(for: text, range: NSRange(location: 0, length: text.length),
+                                options: [.presentationType: NSView.DefinitionPresentationType.overlay]) { _ in baseline }
+        }
         let controller = NSHostingController(rootView: definition)
         // Resizing a visible popover makes AppKit choose its anchor position again.
         controller.sizingOptions = []
@@ -313,6 +333,12 @@ final class WordTextView: NSTextView, NSPopoverDelegate {
         panel.contentSize = size
         definitionPopover = panel
         panel.show(relativeTo: anchor, of: self, preferredEdge: .minY)
+        if panel.isShown, let readingWindow = window {
+            definitionDismissalMonitor = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown, .otherMouseDown]) { [weak self, weak readingWindow] event in
+                if let readingWindow, event.window === readingWindow { self?.dismissDefinition() }
+                return event
+            }
+        }
         onLookup(word)
     }
 }

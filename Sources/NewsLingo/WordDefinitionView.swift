@@ -55,16 +55,10 @@ struct WordDefinitionView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .top, spacing: 8) {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(word)
-                        .font(.system(size: 23, weight: .semibold, design: .rounded))
-                        .foregroundStyle(StudyPalette.ink)
-                        .lineLimit(2)
+                    LookupText(text: word, size: 23, weight: .semibold)
                         .accessibilityAddTraits(.isHeader)
                     if let phrase = entry.phrase, phrase.caseInsensitiveCompare(word) != .orderedSame {
-                        Text(phrase)
-                            .font(.callout)
-                            .foregroundStyle(StudyPalette.accent)
-                            .lineLimit(1)
+                        LookupText(text: phrase, size: 12, secondary: true)
                             .accessibilityLabel("所在词组 \(phrase)")
                     }
                     if let pronunciation = entry.chinese?.pronunciation ?? entry.english?.pronunciation {
@@ -145,7 +139,6 @@ struct WordDefinitionView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 12)
-                .textSelection(.enabled)
             }
             .id(language)
             .frame(maxHeight: .infinity)
@@ -183,7 +176,7 @@ struct WordDefinitionView: View {
                     .font(.caption.weight(.semibold))
                     .accessibilityAddTraits(.isHeader)
                 ForEach(note.lines.indices, id: \.self) { line in
-                    Text(note.lines[line]).lineSpacing(3)
+                    LookupText(text: note.lines[line], secondary: true, lineSpacing: 3)
                 }
             }
         }
@@ -311,15 +304,16 @@ private struct DictionarySenseView: View {
                         .foregroundStyle(StudyPalette.accent)
                 }
                 if let grammar = sense.grammar {
-                    Text(grammar).font(.caption).foregroundStyle(StudyPalette.muted)
+                    LookupText(text: grammar, size: 11, secondary: true)
                 }
                 ForEach(sense.meanings.indices, id: \.self) { index in
                     let meaning = sense.meanings[index]
                     VStack(alignment: .leading, spacing: 2) {
                         if let usage = meaning.usage {
-                            Text(usage).font(.caption).foregroundStyle(StudyPalette.muted)
+                            LookupText(text: usage, size: 11, secondary: true)
                         }
-                        meaningText(meaning).lineSpacing(3)
+                        LookupText(text: meaning.text, size: 15, weight: .medium,
+                                   annotation: meaning.annotation, lineSpacing: 3)
                     }
                 }
                 if !sense.examples.isEmpty {
@@ -328,15 +322,6 @@ private struct DictionarySenseView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-    }
-
-    private func meaningText(_ meaning: DictionaryMeaning) -> Text {
-        let gloss = Text(meaning.text)
-            .font(.system(size: 15, weight: .medium))
-            .foregroundStyle(StudyPalette.ink)
-        guard let annotation = meaning.annotation else { return gloss }
-        let detail = Text(annotation).font(.caption).foregroundStyle(StudyPalette.muted)
-        return Text("\(gloss)  \(detail)")
     }
 
     private var examples: some View {
@@ -348,13 +333,11 @@ private struct DictionarySenseView: View {
             ForEach(sense.examples.indices, id: \.self) { index in
                 let example = sense.examples[index]
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(example.text).foregroundStyle(StudyPalette.ink)
+                    LookupText(text: example.text)
                     if let translation = example.translation {
-                        Text(translation).foregroundStyle(StudyPalette.muted)
+                        LookupText(text: translation, secondary: true)
                     }
                 }
-                .font(.system(size: 13))
-                .lineSpacing(2)
                 .padding(.leading, 8)
                 .overlay(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 1)

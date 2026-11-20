@@ -35,6 +35,11 @@ struct BilingualParagraph: Codable, Hashable {
     let sentences: [BilingualSentence]
 }
 
+struct ArticleSummary: Codable, Equatable {
+    let en: String
+    let zh: String?
+}
+
 struct Article: Codable, Identifiable {
     let id: String
     let title: String
@@ -54,6 +59,7 @@ struct Article: Codable, Identifiable {
     var lookedUp: [String: Int] = [:]
     var attempts: [Attempt] = []
     var bilingual: [BilingualParagraph]?
+    var summary: ArticleSummary?
     var titleZh: String?
     var sourceArticleTitle: String?
     // Preserve translations cached by older releases in existing libraries.
@@ -63,6 +69,17 @@ struct Article: Codable, Identifiable {
     var readingSeconds: Int { secondsByDay.values.reduce(0, +) }
     var hasCompletedReading: Bool { progress >= 1 }
     var hasPassedAssessment: Bool { attempts.contains(where: \.isPassing) }
+    var readingSummary: ArticleSummary {
+        if let summary { return summary }
+        if let paragraph = bilingual?.first, !paragraph.sentences.isEmpty {
+            let lead = paragraph.sentences.prefix(2)
+            return ArticleSummary(en: lead.map(\.en).joined(separator: " "), zh: lead.map(\.zh).joined())
+        }
+        let lead = paragraphs.first ?? title
+        let sentences = ArticleText.sentences(lead).prefix(2).joined(separator: " ")
+        let excerpt = sentences.isEmpty ? lead : sentences
+        return ArticleSummary(en: excerpt.count > 420 ? String(excerpt.prefix(420)) + "…" : excerpt, zh: nil)
+    }
     var reviewDate: Date? {
         attempts.last.flatMap { Calendar.current.date(byAdding: .day, value: $0.isPassing ? 3 : 1, to: $0.date) }
     }
@@ -166,6 +183,7 @@ struct LessonPack: Decodable {
     let level: String
     let paragraphs: [String]
     let bilingual: [BilingualParagraph]?
+    let summary: ArticleSummary?
     let questions: [Question]
 
     struct Source: Decodable {
@@ -176,7 +194,7 @@ struct LessonPack: Decodable {
     }
 
     private enum CodingKeys: String, CodingKey {
-        case version, title, titleZh, source, level, paragraphs, questions
+        case version, title, titleZh, source, level, paragraphs, questions, summary
     }
 
     init(from decoder: Decoder) throws {
@@ -187,6 +205,7 @@ struct LessonPack: Decodable {
         }
         title = try container.decode(String.self, forKey: .title)
         titleZh = try container.decodeIfPresent(String.self, forKey: .titleZh)
+        summary = try container.decodeIfPresent(ArticleSummary.self, forKey: .summary)
         source = try container.decode(Source.self, forKey: .source)
         level = try container.decode(String.self, forKey: .level)
         questions = try container.decode([Question].self, forKey: .questions)
@@ -296,6 +315,16 @@ enum ArticleImporter {
         var article = Article(title: title, paragraphs: paragraphs, sourceName: pack.source.name, sourceURL: pack.source.url,
                               published: pack.source.published, level: pack.level, questions: pack.questions, isGuided: true)
         article.bilingual = aligned
+        if let summary = pack.summary {
+            let en = ArticleText.normalizeWhitespace(summary.en)
+            let zh = summary.zh.map(ArticleText.normalizeWhitespace)
+            guard (1...600).contains(en.count), !ArticleText.words(en).isEmpty, !hasChinese(en),
+                  (pack.version != 2 || zh != nil),
+                  zh.map({ (1...650).contains($0.count) && hasChinese($0) }) ?? true else {
+                throw ImportFailure("摘要需要简短的英文内容。双语学习包也需要匹配的中文摘要。")
+            }
+            article.summary = ArticleSummary(en: en, zh: zh)
+        }
         article.titleZh = pack.titleZh?.trimmingCharacters(in: .whitespacesAndNewlines)
         article.sourceArticleTitle = pack.source.title?.trimmingCharacters(in: .whitespacesAndNewlines)
         return article

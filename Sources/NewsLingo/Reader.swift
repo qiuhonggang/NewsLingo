@@ -21,6 +21,7 @@ struct ReaderView: View {
     @Environment(\.scenePhase) private var phase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var mode = ReadMode.english
+    @State private var showsSummaryTranslation = false
     @State private var toggledTranslations: [ReadMode: Set<SentencePosition>] = [:]
     @State private var showsQuiz = false
     @State private var showsStats = false
@@ -41,6 +42,7 @@ struct ReaderView: View {
                 VStack(alignment: .leading, spacing: 18) {
                     ReadingCover(article: article, showsChineseTitle: mode == .chinese, showsBothTitles: mode == .parallel)
                         .id("readerTop")
+                    summaryCard
                     readingPage
                     readerFooter
                 }
@@ -177,6 +179,47 @@ struct ReaderView: View {
         .accessibilityElement(children: .contain)
         .accessibilityLabel("阅读语言")
         .accessibilityIdentifier("readMode")
+    }
+
+    private var summaryCard: some View {
+        let summary = article.readingSummary
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 10) {
+                Label("摘要", systemImage: "text.alignleft")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(StudyPalette.accent)
+                    .accessibilityAddTraits(.isHeader)
+                Spacer(minLength: 8)
+                Button(showsSummaryTranslation ? "收起中文" : "翻译摘要") {
+                    showsSummaryTranslation.toggle()
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+                .disabled(summary.zh == nil)
+                .help(summary.zh == nil ? "此文章未提供中文摘要" : "展开或收起中文摘要")
+                .accessibilityIdentifier("summaryTranslationToggle")
+            }
+            DictionaryText(text: summary.en, fontSize: max(14, readerFont - 2), onLookup: recordLookup)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .accessibilityIdentifier("summaryEnglish")
+            if showsSummaryTranslation, let chinese = summary.zh {
+                Text(chinese)
+                    .font(.system(size: max(13, readerFont * 0.78)))
+                    .lineSpacing(4)
+                    .foregroundStyle(StudyPalette.ink)
+                    .textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(10)
+                    .background(StudyPalette.softAccent, in: RoundedRectangle(cornerRadius: 8))
+                    .accessibilityIdentifier("summaryChinese")
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 15)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .studyPanel()
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("articleSummary")
     }
 
     private var readingPage: some View {

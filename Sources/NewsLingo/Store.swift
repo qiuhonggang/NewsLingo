@@ -30,20 +30,25 @@ final class Library {
         var next = articles
         if let index = next.firstIndex(where: { $0.id == article.id }) {
             let current = next[index]
-            guard article.bilingual != nil else { return current.id }
-            var updated = article
-            updated.added = current.added
-            updated.position = current.paragraphs == article.paragraphs ? current.position : 0
-            updated.progress = current.progress
-            updated.secondsByDay = current.secondsByDay
-            updated.lookedUp = current.lookedUp
-            updated.translations = current.translations
-            if !current.attempts.isEmpty {
-                updated.questions = current.questions
-                updated.isGuided = current.isGuided
-                updated.attempts = current.attempts
+            if article.bilingual == nil {
+                guard let summary = article.summary, summary != current.summary else { return current.id }
+                next[index].summary = summary
+            } else {
+                var updated = article
+                updated.added = current.added
+                updated.position = current.paragraphs == article.paragraphs ? current.position : 0
+                updated.progress = current.progress
+                updated.secondsByDay = current.secondsByDay
+                updated.lookedUp = current.lookedUp
+                updated.translations = current.translations
+                updated.summary = article.summary ?? current.summary
+                if !current.attempts.isEmpty {
+                    updated.questions = current.questions
+                    updated.isGuided = current.isGuided
+                    updated.attempts = current.attempts
+                }
+                next[index] = updated
             }
-            next[index] = updated
         } else {
             next.insert(article, at: 0)
         }

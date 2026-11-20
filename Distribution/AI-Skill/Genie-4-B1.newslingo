@@ -1,5 +1,9 @@
 {
   "version": 2,
+  "summary": {
+    "en": "Google began rolling out Genie 4 to eligible Google AI Ultra subscribers. People can explore a digital world, change it with text instructions and hear sounds that update with the scene.",
+    "zh": "谷歌开始向符合条件的 Google AI Ultra 订阅用户推出 Genie 4。用户可以探索数字世界，用文字指令修改场景，并听到随场景变化的声音。"
+  },
   "title": "Google Rolls Out Genie 4 for Interactive Worlds",
   "titleZh": "谷歌推出 Genie 4，支持在探索中实时编辑场景",
   "source": {
